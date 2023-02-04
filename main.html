@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>doc</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="DOC_files/libs/clipboard/clipboard.min.js"></script>
+<script src="DOC_files/libs/quarto-html/quarto.js"></script>
+<script src="DOC_files/libs/quarto-html/popper.min.js"></script>
+<script src="DOC_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="DOC_files/libs/quarto-html/anchor.min.js"></script>
+<link href="DOC_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="DOC_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="DOC_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="DOC_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="DOC_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="sorting-algorithms-comparison-based" class="level1">
+<h1>Sorting Algorithms (Comparison-Based)</h1>
+<p>Author: NavinBR</p>
+<p>A comprehensive guide to various comparison-based sorting algorithms and their time complexities.</p>
+<section id="table-of-contents" class="level2">
+<h2 class="anchored" data-anchor-id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#block-sort">Block Sort</a></li>
+<li><a href="#bubble-sort">Bubble Sort</a></li>
+<li><a href="#cocktail-shaker-sort">Cocktail Shaker Sort</a></li>
+<li><a href="#comb-sort">Comb Sort</a></li>
+<li><a href="#cube-sort">CubeSort</a></li>
+<li><a href="#cycle-sort">Cycle Sort</a></li>
+<li><a href="#exchange-sort">Exchange Sort</a></li>
+<li><a href="#gnome-sort">Gnome Sort</a></li>
+<li><a href="#heapsort">HeapSort</a></li>
+<li><a href="#in-place-merge-sort">In-place Merge Sort</a></li>
+<li><a href="#introsort">IntroSort</a></li>
+<li><a href="#library-sort">Library Sort</a></li>
+<li><a href="#merge-sort">Merge Sort !onWork</a></li>
+<li><a href="#odd-even-sort">Odd-Even Sort !onWork</a></li>
+<li><a href="#patience-sort">Patience Sorting !onWork</a></li>
+<li><a href="#quicksort">QuickSort !onWork</a></li>
+<li><a href="#selection-sort">Selection Sort !onWork</a></li>
+<li><a href="#shellsort">ShellSort !onWork</a></li>
+<li><a href="#smoothsort">SmoothSort !onWork</a></li>
+<li><a href="#strand-sort">Strand Sort !onWork</a></li>
+<li><a href="#timsort">TimSort !onWork</a></li>
+<li><a href="#tournament-sort">Tournament Sort !onWork</a></li>
+<li><a href="#tree-sort">Tree Sort !onWork</a></li>
+<li><a href="#time-complexity">Time Complexity</a></li>
+</ul>
+</section>
+<section id="block-sort" class="level2">
+<h2 class="anchored" data-anchor-id="block-sort">Block Sort</h2>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>Block sort is a sorting algorithm that works by grouping the elements into blocks and then sorting each block. This method helps reduce the number of comparisons and improve the performance of the sorting algorithm.</p>
+</section>
+<section id="method" class="level3">
+<h3 class="anchored" data-anchor-id="method">Method</h3>
+<p>The algorithm works by dividing the input array into blocks of size M, where M is a constant. Each block is sorted using an internal sorting algorithm, such as insertion sort or quicksort. After the blocks are sorted, they are merged together to form the final sorted array.</p>
+<p>The size of the block M affects the performance of the algorithm. If M is too small, the algorithm will have to make many comparisons, leading to a slower sorting time. If M is too large, the blocks may not be fully sorted, leading to a longer merging time. A common choice for M is around sqrt(n), where n is the number of elements in the array.</p>
+</section>
+<section id="time-complexity" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity">Time Complexity</h3>
+<p>The best-case time complexity of block sort is O(n), which occurs when the input array is already sorted. The average-case time complexity is O(n log n), which occurs when the blocks are sorted randomly. The worst-case time complexity is O(n^2), which occurs when the blocks are sorted in reverse order.</p>
+<p>The memory complexity of block sort is O(n), as the algorithm requires additional memory to store the blocks while they are being sorted and merged.</p>
+<p>Block sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.</p>
+</section>
+<section id="pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<pre><code>function blockSort(array A, int M)
+int n = length of A
+divide A into blocks of size M
+sort each block using an internal sorting algorithm
+merge the blocks together to form the final sorted array
+end function
+</code></pre>
+</section>
+</section>
+<section id="bubble-sort" class="level2">
+<h2 class="anchored" data-anchor-id="bubble-sort">Bubble Sort</h2>
+<section id="introduction-1" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-1">Introduction</h3>
+<p>Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The algorithm gets its name from the way smaller elements “bubble” to the top of the list.</p>
+</section>
+<section id="method-1" class="level3">
+<h3 class="anchored" data-anchor-id="method-1">Method</h3>
+<p>The algorithm works by starting at the beginning of the list and comparing the first two elements. If the first element is larger than the second element, they are swapped. The algorithm then moves to the next pair of elements and repeats the process. This process is repeated for each pair of elements until the end of the list is reached.</p>
+<p>After the first pass, the largest element will have “bubbled” to the end of the list. The algorithm then repeats the process for the remaining n-1 elements, ignoring the last element since it is guaranteed to be sorted. This process is repeated until the list is fully sorted.</p>
+</section>
+<section id="time-complexity-1" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-1">Time Complexity</h3>
+<p>The best-case time complexity of bubble sort is O(n), which occurs when the input array is already sorted. The average-case time complexity is O(n^2), which occurs when the elements are randomly ordered. The worst-case time complexity is O(n^2), which occurs when the elements are sorted in reverse order.</p>
+<p>The memory complexity of bubble sort is O(1), as the algorithm only requires a constant amount of memory to store a few variables.</p>
+<p>Bubble sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.</p>
+</section>
+<section id="pseudocode-1" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-1">Pseudocode</h3>
+<pre><code>function bubbleSort(array A)
+int n = length of A
+repeat
+swapped = false
+for i = 0 to n-2
+if A[i] &gt; A[i + 1]
+swap A[i] and A[i + 1]
+swapped = true
+end for
+n = n - 1
+until not swapped
+end function</code></pre>
+</section>
+</section>
+<section id="cocktail-shaker-sort" class="level2">
+<h2 class="anchored" data-anchor-id="cocktail-shaker-sort">Cocktail Shaker Sort</h2>
+<section id="introduction-2" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-2">Introduction</h3>
+<p>Cocktail shaker sort, also known as bidirectional bubble sort, is a variation of bubble sort that sorts the elements in both directions. This means that after each pass, the algorithm sorts both the highest and lowest elements in the list, effectively reducing the number of passes required to sort the entire list.</p>
+</section>
+<section id="method-2" class="level3">
+<h3 class="anchored" data-anchor-id="method-2">Method</h3>
+<p>The algorithm works by first checking the largest element in the list and swapping it with the last element in the list. The algorithm then moves in the opposite direction and checks the smallest element in the list, swapping it with the first element in the list. The algorithm then repeats the process for the remaining n-2 elements, ignoring the two elements that are now guaranteed to be sorted. This process is repeated until the list is fully sorted.</p>
+</section>
+<section id="time-complexity-2" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-2">Time Complexity</h3>
+<p>The best-case time complexity of cocktail shaker sort is O(n), which occurs when the input array is already sorted. The average-case time complexity is O(n^2), which occurs when the elements are randomly ordered. The worst-case time complexity is O(n^2), which occurs when the elements are sorted in reverse order.</p>
+<p>The memory complexity of cocktail shaker sort is O(1), as the algorithm only requires a constant amount of memory to store a few variables.</p>
+<p>Cocktail shaker sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.</p>
+</section>
+<section id="pseudocode-2" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-2">Pseudocode</h3>
+<pre><code>function cocktailShakerSort(array A)
+int n = length of A
+int left = 0
+int right = n - 1
+repeat
+for i = left to right
+if A[i] &gt; A[i + 1]
+swap A[i] and A[i + 1]
+swapped = true
+end for
+right = right - 1
+for i = right down to left
+if A[i - 1] &gt; A[i]
+swap A[i - 1] and A[i]
+swapped = true
+end for
+left = left + 1
+until not swapped
+end function</code></pre>
+</section>
+</section>
+<section id="comb-sort" class="level2">
+<h2 class="anchored" data-anchor-id="comb-sort">Comb Sort</h2>
+<section id="introduction-3" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-3">Introduction</h3>
+<p>Comb sort is a comparison-based sorting algorithm that is a variation of bubble sort. The algorithm works by using a gap value to compare elements that are far apart from each other, effectively reducing the number of passes required to sort the entire list.</p>
+</section>
+<section id="method-3" class="level3">
+<h3 class="anchored" data-anchor-id="method-3">Method</h3>
+<p>The algorithm works by first calculating the gap value between the elements to be compared. The gap value starts at n-1 (where n is the length of the array) and is gradually decreased by a shrink factor until it reaches 1.</p>
+<p>In each iteration of the algorithm, the elements that are gap elements apart from each other are compared and swapped if they are out of order. The algorithm continues until the gap value reaches 1 and the list is fully sorted.</p>
+</section>
+<section id="time-complexity-3" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-3">Time Complexity</h3>
+<p>The best-case time complexity of comb sort is O(n), which occurs when the input array is already sorted. The average-case time complexity is O(n<sup>2/2</sup>p), where p is the number of increments used to calculate the gap value. The worst-case time complexity is O(n^2), which occurs when the elements are sorted in reverse order.</p>
+<p>The memory complexity of comb sort is O(1), as the algorithm only requires a constant amount of memory to store a few variables.</p>
+<p>Comb sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.</p>
+</section>
+<section id="pseudocode-3" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-3">Pseudocode</h3>
+<pre><code>function combSort(array A)
+int n = length of A
+int gap = n
+bool swapped = true
+repeat
+gap = floor(gap / 1.3)
+if gap = 0
+gap = 1
+end if
+swapped = false
+for i = 0 to n - gap - 1
+if A[i] &gt; A[i + gap]
+swap A[i] and A[i + gap]
+swapped = true
+end if
+end for
+until gap = 1 and not swapped
+end function</code></pre>
+</section>
+</section>
+<section id="cube-sort" class="level2">
+<h2 class="anchored" data-anchor-id="cube-sort">Cube Sort</h2>
+<section id="introduction-4" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-4">Introduction</h3>
+<p>Cube sort is a sorting algorithm that uses the three-dimensional structure of the array to sort the elements in ascending or descending order. It is a comparison-based algorithm that performs better than other algorithms in some specific cases.</p>
+</section>
+<section id="time-complexity-4" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-4">Time Complexity</h3>
+<p>The time complexity of Cube Sort is O(n^3/2), where n is the number of elements to be sorted. This makes it more efficient than other algorithms in terms of time complexity.</p>
+</section>
+<section id="method-4" class="level3">
+<h3 class="anchored" data-anchor-id="method-4">Method</h3>
+<p>The algorithm works by dividing the array into smaller cubes and then sorting each cube individually. After sorting each cube, the cubes are merged together to form a sorted array. The merging of the cubes is done by using a comparison-based sorting algorithm like Merge Sort or Quick Sort.</p>
+</section>
+<section id="pseudocode-4" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-4">Pseudocode</h3>
+<pre><code>function cubeSort(arr)
+cube_size = ceil(cuberoot(n))
+for i = 0 to cube_size
+sort subarray arr[i*cube_size : (i+1)cube_size-1]
+for i = 1 to cube_size
+merge subarray arr[(i-1)cube_size : icube_size-1] and arr[icube_size : (i+1)*cube_size-1]
+return arr</code></pre>
+</section>
+</section>
+<section id="cycle-sort" class="level2">
+<h2 class="anchored" data-anchor-id="cycle-sort">Cycle Sort</h2>
+<section id="introduction-5" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-5">Introduction</h3>
+<p>Cycle Sort is an in-place and unstable sorting algorithm that is efficient in terms of both time and space complexity. It minimizes the number of writes to the input array, making it a useful algorithm in certain scenarios where writing to memory is a bottleneck.</p>
+</section>
+<section id="time-complexity-5" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-5">Time Complexity</h3>
+<p>The time complexity of Cycle Sort is O(n^2), where n is the number of elements to be sorted.</p>
+</section>
+<section id="stability" class="level3">
+<h3 class="anchored" data-anchor-id="stability">Stability</h3>
+<p>Cycle Sort is an unstable sorting algorithm, meaning that the order of equal elements is not preserved in the sorted array.</p>
+</section>
+<section id="method-5" class="level3">
+<h3 class="anchored" data-anchor-id="method-5">Method</h3>
+<p>The algorithm works by iterating through the array and placing each element in its correct position, reducing the number of writes to the input array. The algorithm performs a series of cycles, where in each cycle, an element is placed in its correct position.</p>
+</section>
+<section id="pseudocode-5" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-5">Pseudocode</h3>
+<pre><code>function cycleSort(arr)
+writes = 0
+for cycle_start = 0 to n-2
+item = arr[cycle_start]
+pos = cycle_start
+for i = cycle_start + 1 to n-1
+if arr[i] &lt; item
+pos += 1
+if pos == cycle_start
+continue
+while item == arr[pos]
+pos += 1
+item, arr[pos] = arr[pos], item
+writes += 1
+while pos != cycle_start
+pos = cycle_start
+for i = cycle_start + 1 to n-1
+if arr[i] &lt; item
+pos += 1
+while item == arr[pos]
+pos += 1
+item, arr[pos] = arr[pos], item
+writes += 1
+return arr</code></pre>
+</section>
+</section>
+<section id="exchange-sort" class="level2">
+<h2 class="anchored" data-anchor-id="exchange-sort">Exchange Sort</h2>
+<section id="introduction-6" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-6">Introduction</h3>
+<p>Exchange sort, also known as swapping sort, is a simple sorting algorithm that repeatedly steps through the list to be sorted, compares each pair of adjacent elements and swaps them if they are in the wrong order.</p>
+</section>
+<section id="method-6" class="level3">
+<h3 class="anchored" data-anchor-id="method-6">Method</h3>
+<p>The algorithm works by iterating through the list, comparing each pair of adjacent elements and swapping them if they are in the wrong order. This process is repeated until the list is sorted.</p>
+</section>
+<section id="time-complexity-6" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-6">Time Complexity</h3>
+<p>The time complexity of exchange sort is O(n^2) in the worst case, as it requires n-1 comparisons for the first pass, n-2 comparisons for the second pass, and so on, until 1 comparison in the last pass.</p>
+<p>The memory complexity of exchange sort is O(1), as it only requires a constant amount of memory to store temporary variables for swapping elements.</p>
+<p>Exchange sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.</p>
+</section>
+<section id="pseudocode-6" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-6">Pseudocode</h3>
+<pre><code>function exchangeSort(array A)
+for i = 0 to n - 2
+for j = i + 1 to n - 1
+if A[i] &gt; A[j]
+swap A[i] and A[j]
+end if
+end for
+end for
+end function</code></pre>
+</section>
+</section>
+<section id="gnome-sort" class="level2">
+<h2 class="anchored" data-anchor-id="gnome-sort">Gnome Sort</h2>
+<section id="introduction-7" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-7">Introduction</h3>
+<p>Gnome sort is a comparison-based sorting algorithm that is similar to the insertion sort algorithm. The algorithm is named after the garden gnomes, who sort objects by repeatedly comparing and swapping elements that are out of order.</p>
+</section>
+<section id="method-7" class="level3">
+<h3 class="anchored" data-anchor-id="method-7">Method</h3>
+<p>The algorithm works by iterating over the list of elements and comparing each element with its adjacent element. If the elements are out of order, they are swapped. The iteration continues until all elements are sorted.</p>
+</section>
+<section id="time-complexity-7" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-7">Time Complexity</h3>
+<p>The best-case time complexity of gnome sort is O(n), which occurs when the input array is already sorted. The average-case time complexity is O(n^2), which occurs when the elements are randomly ordered. The worst-case time complexity is O(n^2), which occurs when the elements are sorted in reverse order.</p>
+<p>The memory complexity of gnome sort is O(1), as the algorithm only requires a constant amount of memory to store a few variables.</p>
+<p>Gnome sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.</p>
+</section>
+<section id="pseudocode-7" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-7">Pseudocode</h3>
+<pre><code>function gnomeSort(array A)
+int i = 1
+while i &lt; length of A
+if A[i-1] &lt;= A[i]
+i = i + 1
+else
+swap A[i] and A[i-1]
+i = i - 1
+end if
+end while
+end function</code></pre>
+</section>
+</section>
+<section id="heapsort" class="level2">
+<h2 class="anchored" data-anchor-id="heapsort">Heapsort</h2>
+<section id="introduction-8" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-8">Introduction</h3>
+<p>Heapsort is a comparison-based sorting algorithm that can be thought of as an improved version of selection sort. The algorithm works by dividing the input into a max heap and a sorted array, and repeatedly removing the maximum element from the max heap and adding it to the sorted array.</p>
+</section>
+<section id="method-8" class="level3">
+<h3 class="anchored" data-anchor-id="method-8">Method</h3>
+<p>The algorithm starts by building a max heap from the input array. The max heap is then repeatedly reduced by swapping the maximum element with the last element in the heap, and then “sifting down” the new root element to restore the max heap property.</p>
+</section>
+<section id="time-complexity-8" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-8">Time Complexity</h3>
+<p>The time complexity of heapsort is O(n log n), where n is the number of elements in the input array.</p>
+</section>
+<section id="pseudocode-8" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-8">Pseudocode</h3>
+<pre><code>function heapSort(array A)
+int n = length of A
+buildMaxHeap(A, n)
+for i = n - 1 down to 1
+swap A[0] and A[i]
+n = n - 1
+maxHeapify(A, 0, n)
+end for
+end function
+
+function buildMaxHeap(array A, int n)
+for i = floor(n / 2) down to 0
+maxHeapify(A, i, n)
+end for
+end function
+
+function maxHeapify(array A, int i, int n)
+int left = 2 * i + 1
+int right = 2 * i + 2
+int largest = i
+if left &lt; n and A[left] &gt; A[i]
+largest = left
+end if
+if right &lt; n and A[right] &gt; A[largest]
+largest = right
+end if
+if largest != i
+swap A[i] and A[largest]
+maxHeapify(A, largest, n)
+end if
+end function</code></pre>
+</section>
+</section>
+<section id="in-place-merge-sort" class="level2">
+<h2 class="anchored" data-anchor-id="in-place-merge-sort">In-Place Merge Sort</h2>
+<section id="introduction-9" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-9">Introduction</h3>
+<p>In-Place Merge Sort is a comparison-based sorting algorithm that sorts an array by dividing it into smaller sub-arrays, sorting these sub-arrays, and then merging them back together. Unlike other sorting algorithms, In-Place Merge Sort does not require any additional memory to store the sub-arrays, as it sorts the array in place using a series of swaps.</p>
+</section>
+<section id="method-9" class="level3">
+<h3 class="anchored" data-anchor-id="method-9">Method</h3>
+<p>The algorithm begins by dividing the input array into sub-arrays of size 1, which are considered to be sorted. The sub-arrays are then merged back together two at a time, with the merging process taking care of sorting the elements.</p>
+</section>
+<section id="time-complexity-9" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-9">Time Complexity</h3>
+<p>The best-case time complexity of In-Place Merge Sort is O(n log n), which occurs when the input array is already sorted. The average-case time complexity is O(n log n), as the merging process takes O(n) time and is repeated log n times. The worst-case time complexity is O(n^2), which occurs when the elements are sorted in reverse order.</p>
+<p>The memory complexity of In-Place Merge Sort is O(1), as the algorithm does not require any additional memory to store the sub-arrays.</p>
+<p>In-Place Merge Sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.</p>
+</section>
+<section id="pseudocode-9" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-9">Pseudocode</h3>
+<pre><code>function inPlaceMergeSort(array A, int l, int r)
+if l &lt; r
+int m = (l + r) / 2
+inPlaceMergeSort(A, l, m)
+inPlaceMergeSort(A, m + 1, r)
+inPlaceMerge(A, l, m, r)
+end if
+end function
+
+function inPlaceMerge(array A, int l, int m, int r)
+int i = l
+int j = m + 1
+while i &lt;= m and j &lt;= r
+if A[i] &lt;= A[j]
+i = i + 1
+else
+swap A[i] with A[j]
+j = j + 1
+m = m + 1
+end if
+end while
+end function</code></pre>
+</section>
+</section>
+<section id="introsort" class="level2">
+<h2 class="anchored" data-anchor-id="introsort">IntroSort</h2>
+<section id="introduction-10" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-10">Introduction</h3>
+<p>IntroSort is a hybrid sorting algorithm that uses a combination of quicksort, heapsort, and insertion sort. The algorithm starts by using quicksort, but switches to heapsort if the recursion depth exceeds a certain limit. If the array is nearly sorted, the algorithm switches to insertion sort for better performance.</p>
+</section>
+<section id="method-10" class="level3">
+<h3 class="anchored" data-anchor-id="method-10">Method</h3>
+<p>The algorithm starts by dividing the input array into smaller sub-arrays using the quicksort method. If the recursion depth exceeds a certain limit, the algorithm switches to heapsort. If the sub-array becomes nearly sorted, the algorithm switches to insertion sort for better performance.</p>
+<p>The algorithm continues until the entire input array is sorted.</p>
+</section>
+<section id="time-complexity-10" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-10">Time Complexity</h3>
+<p>The average-case time complexity of IntroSort is O(n log n), making it a highly efficient sorting algorithm. The worst-case time complexity is O(n log n), which occurs when the input array is nearly sorted or when the recursion depth is limited.</p>
+<p>The memory complexity of IntroSort is O(log n), as the algorithm uses a small amount of memory to store the recursion depth and other variables.</p>
+<p>IntroSort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.</p>
+</section>
+<section id="pseudocode-10" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-10">Pseudocode</h3>
+<pre><code>function IntroSort(array A, int l, int r)
+int n = r - l + 1
+if n &lt;= 16
+insertionSort(A, l, r)
+return
+end if
+int maxDepth = 2 * log2(n)
+IntroSortHelper(A, l, r, maxDepth)
+end function
+
+function IntroSortHelper(array A, int l, int r, int depth)
+int n = r - l + 1
+if n &lt;= 16
+insertionSort(A, l, r)
+return
+end if
+if depth = 0
+heapSort(A, l, r)
+return
+end if
+int p = partition(A, l, r)
+IntroSortHelper(A, l, p - 1, depth - 1)
+IntroSortHelper(A, p + 1, r, depth - 1)
+end function</code></pre>
+</section>
+</section>
+<section id="library-sort" class="level2">
+<h2 class="anchored" data-anchor-id="library-sort">Library Sort</h2>
+<section id="introduction-11" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-11">Introduction</h3>
+<p>Library sort is a comparison-based sorting algorithm that is a variation of merge sort. It is used to sort data in libraries because it has a very low worst-case time complexity.</p>
+</section>
+<section id="method-11" class="level3">
+<h3 class="anchored" data-anchor-id="method-11">Method</h3>
+<p>The algorithm starts by dividing the input array into smaller subarrays and sorting each subarray individually. The sorted subarrays are then merged back together to form a single sorted array.</p>
+<p>The algorithm uses a binary search to find the correct location for each element, which allows it to have a lower worst-case time complexity than other sorting algorithms such as quicksort.</p>
+</section>
+<section id="time-complexity-11" class="level3">
+<h3 class="anchored" data-anchor-id="time-complexity-11">Time Complexity</h3>
+<p>The best-case time complexity of library sort is O(n log n), which occurs when the input array is already sorted. The average-case time complexity is O(n log n), as the binary search used to find the correct location for each element takes O(log n) time. The worst-case time complexity is O(n log^2 n), which is significantly better than the worst-case time complexity of O(n^2) for other sorting algorithms such as bubble sort.</p>
+<p>The memory complexity of library sort is O(n), as the algorithm requires additional memory to store the subarrays while they are being sorted and merged back together.</p>
+<p>Library sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.</p>
+</section>
+<section id="pseudocode-11" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-11">Pseudocode</h3>
+<pre><code>function librarySort(array A)
+divide A into subarrays
+sort each subarray individually
+merge the sorted subarrays back together
+end function</code></pre>
+</section>
+</section>
+<section id="time-complexity-12" class="level2">
+<h2 class="anchored" data-anchor-id="time-complexity-12">Time Complexity</h2>
+<p>The time complexity of a sorting algorithm refers to the amount of time it takes for the algorithm to sort a list of elements. Time complexity is usually expressed using big O notation, which gives an upper bound on the growth of the time required by the algorithm as the size of the input increases.</p>
+<p>Here’s a table that summarizes the time complexities of the sorting algorithms covered in this guide:</p>
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Algorithm</th>
+<th>Best Case</th>
+<th>Average Case</th>
+<th>Worst Case</th>
+<th>Memory</th>
+<th>Stability</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Block Sort</td>
+<td>O(n)</td>
+<td>O(n log n)</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>Stable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="even">
+<td>Bubble Sort</td>
+<td>O(n)</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>Stable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="odd">
+<td>Cocktail Shaker Sort</td>
+<td>O(n)</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>Stable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="even">
+<td>Comb Sort</td>
+<td>O(n log n)</td>
+<td>O(n<sup>2/2</sup>p)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>Stable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="odd">
+<td>Cubesort</td>
+<td>O(n log^2 n)</td>
+<td>O(n log^2 n)</td>
+<td>O(n log^2 n)</td>
+<td>O(n)</td>
+<td>Stable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="even">
+<td>Cycle Sort</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>Stable</td>
+<td>In-Place</td>
+</tr>
+<tr class="odd">
+<td>Exchange Sort</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>Unstable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="even">
+<td>Gnome Sort</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>Stable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="odd">
+<td>Heapsort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(1)</td>
+<td>Unstable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="even">
+<td>In-place Merge Sort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(1)</td>
+<td>Stable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="odd">
+<td>Introsort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n log^2 n)</td>
+<td>O(log n)</td>
+<td>Unstable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="even">
+<td>Library Sort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n)</td>
+<td>Stable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="odd">
+<td>Merge Sort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n)</td>
+<td>Stable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="even">
+<td>Odd-even Sort</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>Stable</td>
+<td>Comparison-based</td>
+</tr>
+<tr class="odd">
+<td>Patience Sorting</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>Stable</td>
+<td>Non-comparison-based</td>
+</tr>
+<tr class="even">
+<td>QuickSort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n^2)</td>
+<td>O(log n)</td>
+<td>Unstable</td>
+<td>Divide and conquer</td>
+</tr>
+<tr class="odd">
+<td>Selection Sort</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>Stable</td>
+<td>Selection</td>
+</tr>
+<tr class="even">
+<td>ShellSort</td>
+<td>O(n log^2 n)</td>
+<td>O(n log^2 n)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>Unstable</td>
+<td>Insertion</td>
+</tr>
+<tr class="odd">
+<td>SmoothSort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(1)</td>
+<td>Stable</td>
+<td>Heap</td>
+</tr>
+<tr class="even">
+<td>Strand Sort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>Stable</td>
+<td>Merge</td>
+</tr>
+<tr class="odd">
+<td>TimSort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n)</td>
+<td>Stable</td>
+<td>Merge-Insertion</td>
+</tr>
+<tr class="even">
+<td>Tournament Sort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>Stable</td>
+<td>Tournament</td>
+</tr>
+<tr class="odd">
+<td>Tree Sort</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>Stable</td>
+<td>Tree</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In the best case, Bubble Sort has a time complexity of O(n), which means that it takes linear time to sort the list.</li>
+<li>In the average case, both Bubble Sort and Insertion Sort have a time complexity of O(n^2), which means that they take quadratic time to sort the list. Selection Sort also has a time complexity of O(n^2) in the average case.</li>
+<li>In the worst case, all three algorithms have a time complexity of O(n^2), which means that they take quadratic time to sort the list.</li>
+<li>In terms of memory, all three algorithms have a memory complexity of O(1), which means that they require a constant amount of extra memory to sort the list.</li>
+<li>All three algorithms are stable, meaning that they preserve the relative order of equal elements in the list.</li>
+<li>All three algorithms are comparison-based, meaning that they rely on comparing elements in the list to determine their relative order.</li>
+</ul>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
