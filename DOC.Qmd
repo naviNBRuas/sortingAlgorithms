@@ -1,3 +1,15 @@
+---
+title: sortingAlgorithms
+format:
+  pdf: 
+    documentclass: report
+    colorlinks: true
+  html:
+    minimal: true
+    code-copy: true
+    link-external-icon: true
+    link-external-newwindow: true
+---
 # Sorting Algorithms (Comparison-Based)
 Author: NavinBR
 
