@@ -28,7 +28,7 @@ A comprehensive guide to various comparison-based sorting algorithms and their t
 - [In-place Merge Sort](#in-place-merge-sort)
 - [IntroSort](#introsort)
 - [Library Sort](#library-sort)
-- [Merge Sort !onWork](#merge-sort)
+- [Merge Sort](#merge-sort)
 - [Odd-Even Sort !onWork](#odd-even-sort)
 - [Patience Sorting !onWork](#patience-sort)
 - [QuickSort !onWork](#quicksort)
@@ -458,7 +458,391 @@ merge the sorted subarrays back together
 end function
 ```
 
+## Merge Sort
 
+### Introduction
+Merge sort is a sorting algorithm that uses a divide-and-conquer approach to sort an array. The algorithm divides the input array into two halves, recursively sorts each half, and then merges the two sorted halves back together to form the final sorted array.
+
+### Method
+The algorithm starts by dividing the input array into two halves. If the array has only one element, it is considered sorted and returned. If the array has more than one element, each half is recursively sorted using the merge sort algorithm.
+
+Once both halves are sorted, the algorithm merges the two sorted halves back together. The merging process involves comparing the first elements of both halves and selecting the smaller element to add to the final sorted array. This process is repeated until all elements from both halves have been added to the final sorted array.
+
+### Time Complexity
+The best-case and average-case time complexity of merge sort is O(n log n), where n is the number of elements in the array. The worst-case time complexity is also O(n log n).
+
+The memory complexity of merge sort is O(n), as the algorithm requires additional memory to store the two halves while they are being sorted and merged back together.
+
+Merge sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function mergeSort(array A, int low, int high)
+if low < high
+int mid = (low + high) / 2
+mergeSort(A, low, mid)
+mergeSort(A, mid + 1, high)
+merge(A, low, mid, high)
+end if
+end function
+
+function merge(array A, int low, int mid, int high)
+int n1 = mid - low + 1
+int n2 = high - mid
+create arrays L[0...n1-1] and R[0...n2-1]
+for i = 0 to n1-1
+L[i] = A[low + i]
+end for
+for j = 0 to n2-1
+R[j] = A[mid + 1 + j]
+end for
+i = 0
+j = 0
+k = low
+while i < n1 and j < n2
+if L[i] <= R[j]
+A[k] = L[i]
+i = i + 1
+else
+A[k] = R[j]
+j = j + 1
+end if
+k = k + 1
+end while
+while i < n1
+A[k] = L[i]
+i = i + 1
+k = k + 1
+end while
+while j < n2
+A[k] = R[j]
+j = j + 1
+k = k + 1
+end while
+end function
+´´´
+
+## Odd-Even Sort
+
+### Introduction
+Odd-Even sort, also known as brick sort, is a sorting algorithm that uses an exchange sort algorithm to sort an array. The algorithm works by comparing and exchanging adjacent elements that are in the wrong order, alternating between odd and even-indexed elements until the array is sorted.
+
+### Method
+The algorithm starts by comparing the first and second elements of the array and exchanging them if they are in the wrong order. The process then continues with the third and fourth elements, and so on, until all even-indexed elements have been compared and exchanged.
+
+The process then repeats, starting with the first and second elements, but this time comparing and exchanging only the odd-indexed elements. The process continues until all odd-indexed elements have been compared and exchanged.
+
+This process of alternating between odd and even-indexed elements is repeated until the entire array is sorted.
+
+### Time Complexity
+The best-case time complexity of odd-even sort is O(n), which occurs when the input array is already sorted. The average-case and worst-case time complexity is O(n^2), as the algorithm may take a long time to sort an array that is not already sorted.
+
+The memory complexity of odd-even sort is O(1), as the algorithm only requires a constant amount of additional memory to store temporary variables for the exchange process.
+
+Odd-Even sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function oddEvenSort(array A)
+int n = length of A
+bool isSorted = false
+while isSorted == false
+isSorted = true
+for i = 1 to n-2 by 2
+if A[i] > A[i+1]
+swap(A[i], A[i+1])
+isSorted = false
+end if
+end for
+for i = 0 to n-2 by 2
+if A[i] > A[i+1]
+swap(A[i], A[i+1])
+isSorted = false
+end if
+end for
+end while
+end function
+´´´
+
+## Patience Sorting
+
+### Introduction
+Patience sorting is a solitaire card game that is used to sort a deck of cards. It can also be used as a sorting algorithm, where the deck of cards represents the input array.
+
+### Method
+The algorithm starts by creating a stack for each unique value in the input array. The first element in the input array is placed on the first stack. The next element in the input array is then compared to the top card in each stack, and if it is greater, it is placed on the next available stack. If there is no available stack, a new stack is created for the element.
+
+This process continues until all elements in the input array have been placed on a stack. The stacks are then combined to form the final sorted array.
+
+### Time Complexity
+The best-case and average-case time complexity of patience sorting is O(n log n), as the algorithm creates a balanced binary search tree from the stacks. The worst-case time complexity is O(n^2), which occurs when the input array is already sorted in reverse order and creates a linked list of stacks.
+
+The memory complexity of patience sorting is O(n), as the algorithm requires additional memory to store the stacks.
+
+Patience sorting is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function patienceSort(array A)
+int n = length of A
+create an array of stacks
+for i = 0 to n-1
+insert A[i] into the correct position in the stacks
+end for
+flatten the stacks into the final sorted array
+end function
+´´´
+
+## QuickSort
+
+### Introduction
+QuickSort is a divide-and-conquer sorting algorithm that works by selecting a "pivot" element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.
+
+### Method
+The algorithm starts by selecting a pivot element from the array. The pivot is typically chosen as the first, last, or middle element of the array, or it may be chosen randomly.
+
+Next, all elements less than the pivot are moved to its left, and all elements greater than the pivot are moved to its right. This process is known as partitioning.
+
+The sub-arrays on either side of the pivot are then sorted recursively using the same process, until the entire array is sorted.
+
+### Time Complexity
+The average-case time complexity of QuickSort is O(n log n), but the worst-case time complexity is O(n^2), which occurs when the pivot is chosen poorly, such as being either the smallest or largest element in the array.
+
+The memory complexity of QuickSort is O(log n) in the best case, O(n) in the average case, and O(n) in the worst case, as the algorithm requires additional memory to store the recursive function calls.
+
+QuickSort is an unstable sorting algorithm, meaning that elements with the same value may not retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function quickSort(array A, int low, int high)
+if low < high
+int pivotIndex = partition(A, low, high)
+quickSort(A, low, pivotIndex - 1)
+quickSort(A, pivotIndex + 1, high)
+end if
+end function
+
+function partition(array A, int low, int high)
+int pivot = A[high]
+int i = low - 1
+for j = low to high - 1
+if A[j] <= pivot
+i = i + 1
+swap A[i] and A[j]
+end if
+end for
+swap A[i + 1] and A[high]
+return i + 1
+end function
+´´´
+
+## Selection Sort
+
+### Introduction
+Selection Sort is a simple sorting algorithm that works by repeatedly finding the minimum element from the unsorted portion of the array and swapping it with the first unsorted element.
+
+### Method
+The algorithm divides the input array into two parts: a sorted part, which starts as an empty list, and an unsorted part, which is the entire input array.
+
+In each iteration, the minimum element from the unsorted part of the array is found and swapped with the first unsorted element. This adds the minimum element to the sorted part and reduces the size of the unsorted part by one.
+
+The process is repeated until all elements have been added to the sorted part and the entire array is sorted.
+
+### Time Complexity
+The best-case and average-case time complexity of Selection Sort is O(n^2), where n is the number of elements in the array. The worst-case time complexity is also O(n^2), as every element must be compared to every other element.
+
+The memory complexity of Selection Sort is O(1), as the algorithm requires only a constant amount of additional memory to store the temporary variables used during the sorting process.
+
+Selection Sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function selectionSort(array A)
+int n = length of A
+for i = 0 to n - 2
+int minIndex = i
+for j = i + 1 to n - 1
+if A[j] < A[minIndex]
+minIndex = j
+end if
+end for
+swap A[i] and A[minIndex]
+end for
+end function
+´´´
+
+## ShellSort
+
+### Introduction
+ShellSort is a variation of Insertion Sort that works by sorting the elements in a partially sorted array. The algorithm uses a gap sequence to determine the steps between the elements that are compared and swapped.
+
+### Method
+The algorithm starts by dividing the input array into a number of sublists, with each sublist containing elements that are a certain number of positions apart from each other. The sublists are then sorted using Insertion Sort.
+
+After the sublists have been sorted, the gap between the elements is reduced, and the sublists are sorted again. This process is repeated until the gap is equal to 1, at which point the entire array is sorted.
+
+The choice of gap sequence affects the performance of the algorithm. A common choice for the gap sequence is the Knuth sequence, which is given by the formula (3^k - 1) / 2, where k is the number of sublists.
+
+### Time Complexity
+The best-case time complexity of ShellSort is O(n log^2 n), where n is the number of elements in the array. The average-case and worst-case time complexity is O(n^1.5), as the algorithm requires a large number of comparisons and swaps to sort the elements.
+
+The memory complexity of ShellSort is O(1), as the algorithm requires only a constant amount of additional memory to store the temporary variables used during the sorting process.
+
+ShellSort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function shellSort(array A)
+int n = length of A
+int gap = n / 2
+while gap > 0
+for i = gap to n - 1
+int temp = A[i]
+int j = i
+while j >= gap and A[j - gap] > temp
+A[j] = A[j - gap]
+j = j - gap
+end while
+A[j] = temp
+end for
+gap = gap / 2
+end while
+end function
+´´´
+
+## SmoothSort
+
+### Introduction
+SmoothSort is a sorting algorithm that is based on HeapSort and works by building a series of heaps and sorting the elements within the heaps. The algorithm uses a smooth heap data structure, which is a combination of a binary heap and a Fibonacci heap.
+
+### Method
+The algorithm starts by dividing the input array into a number of heaps, with each heap containing a series of elements. The heaps are then sorted using HeapSort, with the largest element in each heap being swapped with the root of the heap.
+
+After the heaps have been sorted, the algorithm builds a new heap by merging the two smallest heaps. This process is repeated until there is only one heap remaining, which will contain the final sorted array.
+
+### Time Complexity
+The best-case time complexity of SmoothSort is O(n log n), where n is the number of elements in the array. The average-case and worst-case time complexity is O(n log n), as the algorithm requires a logarithmic number of comparisons and swaps to sort the elements.
+
+The memory complexity of SmoothSort is O(1), as the algorithm requires only a constant amount of additional memory to store the temporary variables used during the sorting process.
+
+SmoothSort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function smoothSort(array A)
+int n = length of A
+build a series of heaps from the elements in A
+while there is more than one heap
+sort the two smallest heaps using HeapSort
+merge the two heaps into a single heap
+end while
+end function
+´´´
+
+## Strand Sort
+
+### Introduction
+Strand Sort is a sorting algorithm that works by dividing the input array into a series of strands, where each strand is a partially sorted sub-array. The algorithm then merges the strands together to form the final sorted array.
+
+### Method
+The algorithm starts by dividing the input array into a number of strands, with each strand containing a series of elements that are in non-decreasing order. The strands are then merged together to form the final sorted array.
+
+The merging process involves comparing the first element of each strand and selecting the smallest element. This element is then added to the final sorted array, and the strand from which the element was selected is updated by removing the first element. This process is repeated until all strands have been merged together.
+
+### Time Complexity
+The best-case time complexity of Strand Sort is O(n), which occurs when the input array is already sorted. The average-case time complexity is O(n log n), which occurs when the strands are sorted randomly. The worst-case time complexity is O(n^2), which occurs when the strands are sorted in reverse order.
+
+The memory complexity of Strand Sort is O(n), as the algorithm requires additional memory to store the strands while they are being merged together.
+
+Strand Sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function strandSort(array A)
+int n = length of A
+divide A into strands
+merge the strands together to form the final sorted array
+end function
+´´´
+
+## TimSort
+
+### Introduction
+TimSort is a sorting algorithm that is efficient for both small and large arrays, and is used as the standard sorting algorithm in many programming languages, including Python and Java.
+
+### Method
+TimSort is a hybrid sorting algorithm that uses both comparison-based and non-comparison-based sorting techniques. It starts by dividing the input array into small sub-arrays, which are then sorted using an internal sorting algorithm, such as insertion sort. The sub-arrays are then merged together to form the final sorted array.
+
+The algorithm uses a concept known as "galloping" to efficiently merge the sub-arrays. When merging two sub-arrays, TimSort compares the first elements of each sub-array. If the first element of the first sub-array is smaller than the first element of the second sub-array, TimSort assumes that the rest of the first sub-array will also be smaller, and "gallops" to the end of the first sub-array.
+
+### Time Complexity
+The best-case time complexity of TimSort is O(n), which occurs when the input array is already sorted. The average-case time complexity is O(n log n), which occurs when the sub-arrays are sorted randomly. The worst-case time complexity is O(n log n), which occurs when the sub-arrays are sorted in reverse order.
+
+The memory complexity of TimSort is O(n), as the algorithm requires additional memory to store the sub-arrays while they are being sorted and merged.
+
+TimSort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function TimSort(array A)
+int n = length of A
+divide A into sub-arrays
+sort each sub-array using an internal sorting algorithm
+merge the sub-arrays together to form the final sorted array
+end function
+´´´
+
+## Tournament Sort
+
+### Introduction
+Tournament sort is a sorting algorithm that uses a binary tree data structure to sort an input array. It is an efficient sorting algorithm that can sort large arrays quickly, and is often used in computer algorithms and programming contests.
+
+### Method
+Tournament sort starts by dividing the input array into pairs of elements. Each pair of elements is compared, and the smaller element is moved to the top of the binary tree structure. This process continues, with the smaller elements from each comparison being moved up the tree, until the entire input array is represented in the tree.
+
+The elements in the binary tree can then be extracted in sorted order by repeatedly removing the smallest element from the top of the tree. This process continues until all elements have been removed from the tree.
+
+### Time Complexity
+The best-case time complexity of tournament sort is O(n log n), which occurs when the input array is randomly sorted. The average-case time complexity is O(n log n), which occurs when the elements are randomly compared. The worst-case time complexity is O(n^2), which occurs when the input array is sorted in reverse order.
+
+The memory complexity of tournament sort is O(n), as the algorithm requires additional memory to store the binary tree structure.
+
+Tournament sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function tournamentSort(array A)
+int n = length of A
+build a binary tree from the input array by comparing pairs of elements
+extract the elements from the tree in sorted order
+end function
+´´´
+
+## Tree Sort
+
+### Introduction
+Tree sort is a sorting algorithm that uses a binary search tree data structure to sort an input array. It is an efficient sorting algorithm that can sort large arrays quickly, and is often used in computer algorithms and programming contests.
+
+### Method
+Tree sort starts by inserting each element of the input array into a binary search tree. The elements are inserted in such a way that the binary search tree property is maintained, meaning that the left child of a node is smaller than the node and the right child is larger than the node.
+
+Once all elements have been inserted into the tree, the elements can be extracted in sorted order by performing an in-order traversal of the tree. During the in-order traversal, the elements are visited in the order in which they would appear in a sorted array.
+
+### Time Complexity
+The best-case time complexity of tree sort is O(n log n), which occurs when the input array is randomly sorted. The average-case time complexity is O(n log n), which occurs when the elements are randomly inserted into the tree. The worst-case time complexity is O(n^2), which occurs when the input array is sorted in reverse order.
+
+The memory complexity of tree sort is O(n), as the algorithm requires additional memory to store the binary search tree structure.
+
+Tree sort is a stable sorting algorithm, meaning that elements with the same value will retain their relative order in the final sorted array.
+
+### Pseudocode
+´´´
+function treeSort(array A)
+int n = length of A
+build a binary search tree from the input array
+perform an in-order traversal of the tree to extract the elements in sorted order
+end function
+´´´
 
 ## Time Complexity
 
