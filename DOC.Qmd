@@ -1,5 +1,7 @@
 ---
 title: sortingAlgorithms
+author: navinBR
+author-link: https://github.com/naviNBRuas
 format:
   pdf: 
     documentclass: report
@@ -9,7 +11,9 @@ format:
     code-copy: true
     link-external-icon: true
     link-external-newwindow: true
+    output-file: index.html
 ---
+
 # Sorting Algorithms (Comparison-Based)
 Author: NavinBR
 
@@ -29,16 +33,16 @@ A comprehensive guide to various comparison-based sorting algorithms and their t
 - [IntroSort](#introsort)
 - [Library Sort](#library-sort)
 - [Merge Sort](#merge-sort)
-- [Odd-Even Sort !onWork](#odd-even-sort)
-- [Patience Sorting !onWork](#patience-sort)
-- [QuickSort !onWork](#quicksort)
-- [Selection Sort !onWork](#selection-sort)
-- [ShellSort !onWork](#shellsort)
-- [SmoothSort !onWork](#smoothsort)
-- [Strand Sort !onWork](#strand-sort)
-- [TimSort !onWork](#timsort)
-- [Tournament Sort !onWork](#tournament-sort)
-- [Tree Sort !onWork](#tree-sort)
+- [Odd-Even Sort](#odd-even-sort)
+- [Patience Sorting](#patience-sort)
+- [QuickSort](#quicksort)
+- [Selection Sort](#selection-sort)
+- [ShellSort](#shellsort)
+- [SmoothSort](#smoothsort)
+- [Strand Sort](#strand-sort)
+- [TimSort](#timsort)
+- [Tournament Sort](#tournament-sort)
+- [Tree Sort](#tree-sort)
 - [Time Complexity](#time-complexity)
 
 ## Block Sort

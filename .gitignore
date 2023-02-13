@@ -1,0 +1,8 @@
+# Rproj Files
+*.Rhistory
+*.Rproj
+
+#Quarto Files
+DOC_files/
+DOC.log
+DOC.tex
